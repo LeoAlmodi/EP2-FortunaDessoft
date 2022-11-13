@@ -56,7 +56,7 @@ def valida_questao(questao):
 
     return out   
 
-def valida_questoes(lista):
+def valida_questoes(base_questoes):
     def valida_questao(questao):
         out = {}
         out_op = {}
@@ -102,7 +102,7 @@ def valida_questoes(lista):
         return out   
 
     out2 = []
-    for i in lista:
+    for i in base_questoes:
         out2.append(valida_questao(i))
 
     return out2
@@ -138,7 +138,7 @@ def gera_ajuda(questao):
     return f"DICA:\nOpções certamente erradas: {dicas}"
 
 
-questao = [{'titulo': 'Qual o resultado da operação 57 + 32?',
+base_questoes = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'nivel': 'facil',
           'opcoes': {'A': '-19', 'B': '85', 'C': '89', 'D': '99'},
           'correta': 'C'},
@@ -312,3 +312,4 @@ input('Aperte ENTER para continuar...')
 
 print('\nO jogo já vai começar! Lá vem a primeira questão!\n\nVamos começar com questões do nível FACIL!\n')  
 input('Aperte ENTER para continuar...')
+
