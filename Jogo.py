@@ -56,7 +56,7 @@ def valida_questao(questao):
 
     return out   
 
-def valida_questoes(questao):
+def valida_questoes(questoes):
     def valida_questao(questao):
         out = {}
         out_op = {}
@@ -102,24 +102,24 @@ def valida_questoes(questao):
         return out   
 
     out2 = []
-    for i in questao:
+    for i in questoes:
         out2.append(valida_questao(i))
 
     return out2
 
-def sorteia_questao(questao, nivel):
-    result =  random.choice(questao[nivel])
+def sorteia_questao(questoes, nivel):
+    result =  random.choice(questoes[nivel])
     return result
 
-def sorteia_questao_inedita (questao, nivel, lista):
-    questao_sort = sorteia_questao(questao, nivel)
-    while questao_sort in lista:
-        questao_sort = sorteia_questao(questao, nivel)
-    lista.append(questao_sort)
+def sorteia_questao_inedita (questoes, nivel, ja_sorteada):
+    questao_sort = sorteia_questao(questoes, nivel)
+    while questao_sort in ja_sorteada:
+        questao_sort = sorteia_questao(questoes, nivel)
+    ja_sorteada.append(questao_sort)
     return questao_sort
 
-def questao_para_texto (result, id):
-    return '----------------------------------------\nQUESTAO {}\n\n{}\n\nRESPOSTAS:\nA: {}\nB: {}\nC: {}\nD: {}'.format(id, result['titulo'], questao['opcoes']['A'], questao['opcoes']['B'], questao['opcoes']['C'], questao['opcoes']['D'])
+def questao_para_texto (questao, id):
+    return '----------------------------------------\nQUESTAO {}\n\n{}\n\nRESPOSTAS:\nA: {}\nB: {}\nC: {}\nD: {}'.format(id, questao['titulo'], questao['opcoes']['A'], questao['opcoes']['B'], questao['opcoes']['C'], questao['opcoes']['D'])
 
 def gera_ajuda(questao):
     letras = [ "A", "B", "C", "D"]
@@ -138,7 +138,7 @@ def gera_ajuda(questao):
     return f"DICA:\nOpções certamente erradas: {dicas}"
 
 
-questao = [{'titulo': 'Qual o resultado da operação 57 + 32?',
+questoes = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'nivel': 'facil',
           'opcoes': {'A': '-19', 'B': '85', 'C': '89', 'D': '99'},
           'correta': 'C'},
@@ -313,10 +313,8 @@ input('Aperte ENTER para continuar...')
 print('\nO jogo já vai começar! Lá vem a primeira questão!\n\nVamos começar com questões do nível FACIL!\n')  
 input('Aperte ENTER para continuar...')
 
-print(valida_questao(questao))
-print(valida_questoes(questao))
 
 nivel = 'facil'
  
-print(sorteia_questao(questao, nivel))
-print(questao_para_texto (questao, id))
+ja_sorteada = []
+questao = sorteia_questao_inedita(questoes, nivel, ja_sorteada)
