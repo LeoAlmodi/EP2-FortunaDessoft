@@ -296,4 +296,9 @@ questao = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'correta': 'D'}
         ]
 
+print('Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!')
+
+nome = input('Qual seu nome?')
+
+print(f'\nOk {nome}, você tem direito a pular 3 vezes e 2 ajudas!\nAs opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!\n\nAperte ENTER para continuar...'  )
     
