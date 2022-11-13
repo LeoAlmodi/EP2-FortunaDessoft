@@ -1,3 +1,8 @@
+import colorama
+from colorama import Fore
+from colorama import Style
+import random
+
 def transforma_base(questoes):
     saida = {}
     for i in questoes:
@@ -101,8 +106,6 @@ def valida_questoes(lista):
         out2.append(valida_questao(i))
 
     return out2
-
-import random
 
 def sorteia_questao(questao, nivel):
     result =  random.choice(questao[nivel])
@@ -296,11 +299,14 @@ questao = [{'titulo': 'Qual o resultado da operação 57 + 32?',
           'correta': 'D'}
         ]
 
-print('Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!')
+colorama.init()
+
+print(f"{Fore.MAGENTA + Style.BRIGHT}Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!{Style.RESET_ALL}")
 
 nome = input('Qual seu nome?')
 
-print(f'\nOk {nome}, você tem direito a pular 3 vezes e 2 ajudas!\nAs opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!\n\n'  )
+print(f'\nOk {nome}, você tem direito a pular 3 vezes e 2 ajudas!')
+print(f'{Fore.BLUE + Style.BRIGHT}opções de resposta são "A", "B", "C", "D", "ajuda", "pula" e "parar"!{Style.RESET_ALL}\n'  )
 input('Aperte ENTER para continuar...')
 
 
